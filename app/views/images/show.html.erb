@@ -1,1 +1,6 @@
-<%= image_tag(@image.file) %>
+<div>
+    <% @image.files.each do |file| %>
+        <%= image_tag(file) %>
+        </br>
+    <% end %>
+</div>
