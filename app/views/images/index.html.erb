@@ -1,18 +1,2 @@
-<p id="notice"><%= notice %></p>
-<%= form_with(model: @image) do |form| %>
-    <% if @simulation.errors.any? %>
-        <ul>
-            <% @simulation.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-        </ul>
-    <% end %>
-    <div class="field">
-        <%= form.label :files %>
-        <%= form.file_field :files, multiple: true, accept: 'image/*' %>
-    </div>
-
-    <div class="actions">
-        <%= form.submit %>
-    </div>
-<% end %>
+<%= render 'form', image: @image %>
+<%= javascript_pack_tag 'index' %>

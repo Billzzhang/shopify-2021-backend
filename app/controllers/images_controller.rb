@@ -3,11 +3,15 @@
 # Controller to create, serve and destroy images
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[show]
-  before_action :upload_is_image, only: %i[create]
+
+  def home
+    redirect_to images_path
+  end
 
   # GET /images or /images.json
   def index
     @images = Image.all
+    @image = Image.new
   end
 
   # GET /images/1 or /images/1.json
@@ -22,7 +26,7 @@ class ImagesController < ApplicationController
         format.html { redirect_to @image, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
@@ -36,14 +40,10 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.permit(files: [])
-  end
-
-  def upload_is_image
-    params[:files].each do |file|
-      unless file && file.content_type =~ (%r{^image/(jpeg|pjpeg|gif|png|bmp)$})
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    begin
+      params.require(:image).permit(files: [])
+    rescue ActionController::ParameterMissing
+      format.html {render :index, :status => :unprocessable_entity}
     end
   end
 end
