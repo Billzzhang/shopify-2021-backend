@@ -43,7 +43,9 @@ class ImagesController < ApplicationController
     begin
       params.require(:image).permit(files: [])
     rescue ActionController::ParameterMissing
-      format.html {render :index, :status => :unprocessable_entity}
+      respond_to do |format|
+        format.html {render :index, :status => :unprocessable_entity}
+      end
     end
   end
 end

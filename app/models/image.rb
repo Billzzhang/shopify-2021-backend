@@ -2,6 +2,7 @@
 
 class Image < ApplicationRecord
   has_many_attached :files
+  validates :files, presence:true
   validate :correct_file_type
 
   private

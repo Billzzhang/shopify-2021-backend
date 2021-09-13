@@ -1,2 +1,12 @@
 <%= render 'form', image: @image %>
+
+<div id="imageDiv">
+  <% @images.each do |image|%>
+    <% image.files.each do |file| %>
+      <%= image_tag(file, size: '400x400') %>
+      </br>
+    <% end %>
+  <% end %>
+</div>
+
 <%= javascript_pack_tag 'index' %>
