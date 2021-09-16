@@ -1,4 +1,4 @@
-<div class="w-full justify-center items-center">
+<div class="w-full justify-center items-center mx-4">
   <p id="notice"><%= notice %></p>
   <%= form_with(model: image) do |form| %>
     <% if image.errors.any? %>
@@ -24,6 +24,7 @@
     </div>
 
     <div class="">
-      <%= form.submit id: "submitFile", disabled: true, value: "Upload File(s)", class: "text-gray-300" %>
+      <%= form.submit id: "submitFile", disabled: true, value: "Upload File(s)", class: "p-2 text-gray-500 rounded-md border-gray-600 border" %>
     </div>
   <% end %>
+</div>

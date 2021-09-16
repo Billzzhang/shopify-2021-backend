@@ -1,15 +1,15 @@
 <div class="flex justify-center h-screen w-full mt-8">
   <div class="w-2/3">
-    <p class="text-3xl">Welcome to the Image Repository!</p>
-    <p class="text-xl">To start, please upload an image </p>
-    <p class="text-xl">To see your image at full resolution, please click on the image</p> 
-    <div class="">
+    <p class="text-3xl font-bold">Welcome to the Image Repository!</p>
+    <p class="text-xl text-gray-500">To start, please upload an image </p>
+    <p class="text-xl text-gray-500">To see your image at full resolution, please click on the image</p> 
+    <div class="border-dashed rounded-lg border-blue-500 border-4 bg-gray-100 my-3">
       <%= render 'form', image: @image %></br>
     </div>
     <div id="imageDiv" class="flex flex-col justify-center w-full">
       <% @images.each do |image|%>
-        <div class="py-3 mx-auto">
-          <%= link_to image_tag(image.file, size: '400x400'), image %>
+        <div class="py-3 mx-auto h-96">
+          <%= link_to image_tag(image.file, class: "max-h-full"), image %>
         </div>
       <% end %>
     </div>
