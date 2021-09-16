@@ -1,6 +1,12 @@
-<div>
-    <% @image.files.each do |file| %>
-        <%= image_tag(file) %>
-        </br>
-    <% end %>
+<div class="w-screen h-screen relative">
+    <div class="flex flex-wrap flex-row justify-center items-center pl-5 h-auto bg-gray-100">
+        <%= link_to root_path, class: "px-2 bg-green-400 bg-opacity-75 hover:bg-opacity-100 rounded-md" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+        <% end %>
+        
+        <%= link_to "Delete", @image, method: :delete, data: { confirm: 'Are you sure you want to delete the image?' }, class: "mx-8 my-4 p-3 bg-red-600 bg-opacity-75 hover:bg-opacity-100 rounded-md font-semibold text-xl" %>
+    </div>
+    <%= image_tag @image.file %>
 </div>

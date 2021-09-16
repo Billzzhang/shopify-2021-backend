@@ -17,7 +17,7 @@
       <div class="py-2">
         <%= form.label :files, class: "text-2xl" %>
       </div>
-      <%= form.file_field :files, multiple: true, accept: 'image/*', id: "inputFile", required: true %>
+      <%= form.file_field :files, multiple: true, accept: 'image/png,image/jpeg,image/bmp', id: "inputFile", required: true %>
       <div class="py-2">
         <p class="text-lg">Note: only .png/.jpg/.bmp files are accepted </p>
       </div>

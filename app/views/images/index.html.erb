@@ -8,11 +8,9 @@
     </div>
     <div id="imageDiv" class="flex flex-col justify-center w-full">
       <% @images.each do |image|%>
-        <% image.files.each do |file| %>
-          <div class="py-3 mx-auto">
-            <%= image_tag(file, size: '400x400') %>
-          </div>
-        <% end %>
+        <div class="py-3 mx-auto">
+          <%= link_to image_tag(image.file, size: '400x400'), image %>
+        </div>
       <% end %>
     </div>
   </div>
