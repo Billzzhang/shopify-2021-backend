@@ -1,12 +1,21 @@
-<%= render 'form', image: @image %>
-
-<div id="imageDiv">
-  <% @images.each do |image|%>
-    <% image.files.each do |file| %>
-      <%= image_tag(file, size: '400x400') %>
-      </br>
-    <% end %>
-  <% end %>
+<div class="flex justify-center h-screen w-full mt-8">
+  <div class="w-2/3">
+    <p class="text-3xl">Welcome to the Image Repository!</p>
+    <p class="text-xl">To start, please upload an image </p>
+    <p class="text-xl">To see your image at full resolution, please click on the image</p> 
+    <div class="">
+      <%= render 'form', image: @image %></br>
+    </div>
+    <div id="imageDiv" class="flex flex-col justify-center w-full">
+      <% @images.each do |image|%>
+        <% image.files.each do |file| %>
+          <div class="py-3 mx-auto">
+            <%= image_tag(file, size: '400x400') %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= javascript_pack_tag 'index' %>

@@ -9,7 +9,7 @@ class Image < ApplicationRecord
 
   def correct_file_type
     self.files.each do |file|
-      if file.content_type !~ (%r{^image/(jpeg|pjpeg|gif|png|bmp)$})
+      if file.content_type !~ (%r{^image/(jpeg|pjpeg|png|bmp)$})
         errors.add(:file, "is not the right type")
         return false
       end
