@@ -14,3 +14,12 @@ Metrics/MethodLength:
 
 Rails/CreateTableWithTimestamps:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: false

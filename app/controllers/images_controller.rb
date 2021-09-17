@@ -12,17 +12,26 @@ class ImagesController < ApplicationController
   def index
     @images = Image.all
     @image = Image.new
+    respond_to do |format|
+      format.html { render :index, status: :ok }
+      format.json { render json: @images, status: :ok }
+    end
   end
 
   # GET /images/1 or /images/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.html { render :show, status: :ok }
+      format.json { render json: @image, status: :ok }
+    end
+  end
 
   # POST /images or /images.json
   def create
     successful_save = true
     image_params[:files].each do |file|
-      @image = Image.new({file: file})
-      if !@image.save
+      @image = Image.new({ file: file })
+      unless @image.save
         successful_save = false
         break
       end
@@ -30,10 +39,10 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if successful_save
-        format.html { redirect_to root_path, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
+        format.html { redirect_to root_path, notice: 'Image was successfully created.', status: :created }
+        format.json { render json: @image, status: :created, location: @image }
       else
-        format.html { redirect_to root_path, notice: 'Image failed to be stored.' }
+        format.html { redirect_to root_path, notice: 'Image failed to be stored.', status: :unprocessable_entity }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
@@ -43,25 +52,23 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Image was successfully deleted." }
+      format.html { redirect_to root_path, notice: 'Image was successfully deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_image
     @image = Image.find(params[:id])
   end
 
   def image_params
-    begin
-      params.require(:image).permit(files: [])
-    rescue ActionController::ParameterMissing
-      respond_to do |format|
-        format.html {render :index, :status => :unprocessable_entity}
-      end
+    params.require(:image).permit(files: [])
+  rescue ActionController::ParameterMissing
+    respond_to do |format|
+      format.html { render :index, status: :unprocessable_entity }
+      format.json { render json: @image, status: :unprocessable_entity }
     end
   end
 end
