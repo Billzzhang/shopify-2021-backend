@@ -1,8 +1,8 @@
-FROM ruby:2.7.4-alpine as base
-
-ARG PACKAGES="build-dependencies build-base git nodejs yarn tzdata postgresql-client postgresql-dev"
-
-RUN apk update && apk add --virtual $PACKAGES
+FROM ruby:2.7.4
+RUN curl https://deb.nodesource.com/setup_12.x | bash
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client tzdata
 
 RUN mkdir /shopify-2021-backend
 WORKDIR /shopify-2021-backend
@@ -10,7 +10,7 @@ COPY Gemfile /shopify-2021-backend/Gemfile
 COPY Gemfile.lock /shopify-2021-backend/Gemfile.lock
 RUN bundle install
 COPY . /shopify-2021-backend
-RUN yarn install
+RUN yarn install --check-files
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
