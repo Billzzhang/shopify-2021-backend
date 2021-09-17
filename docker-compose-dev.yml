@@ -12,7 +12,8 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgresdb
   web:
-    image: billzzhang/shopify-2021-backend:latest
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     container_name: image-repo
     volumes:
       - .:/shopify-2021-backend
