@@ -1,2 +1,13 @@
-POSTGRES_USER=
-POSTGRES_PASSWORD=
+DB_USERNAME=
+DB_PASSWORD=
+DB_NAME=
+DB_PORT=
+DB_HOST=
+DB_ADAPTER=
+
+# The hostname that the application is accessible from.
+#
+# Used to protect against various HTTP header attacks
+# Should be in the form of "domain.com"
+#
+SAFE_HOSTS=
