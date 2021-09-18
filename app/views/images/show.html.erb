@@ -8,5 +8,5 @@
     
     <%= link_to "Delete", @image, method: :delete, data: { confirm: 'Are you sure you want to delete the image?' }, class: "mx-8 my-4 p-3 bg-red-600 bg-opacity-75 hover:bg-opacity-100 rounded-md font-semibold text-xl" %>
   </div>
-  <%= image_tag @image.file %>
+  <%= image_tag polymorphic_url(@image.file) %>
 </div>

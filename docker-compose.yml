@@ -14,6 +14,7 @@ services:
   web:
     image: billzzhang/shopify-2021-backend:latest
     container_name: image-repo
+    pull_policy: always
     volumes:
       - .:/shopify-2021-backend
     ports:

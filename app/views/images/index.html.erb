@@ -9,7 +9,7 @@
     <div id="imageDiv" class="flex flex-col justify-center w-full">
       <% @images.each do |image|%>
         <div class="py-3 mx-auto h-96">
-          <%= link_to image_tag(image.file, class: "max-h-full"), image %>
+          <%= link_to image_tag(polymorphic_url(image.file), class: "max-h-full"), image %>
         </div>
       <% end %>
     </div>
