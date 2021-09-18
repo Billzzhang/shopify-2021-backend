@@ -4,7 +4,7 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
 
 Custom Image Repository for [Shopify Backend Challenge](https://docs.google.com/document/d/1eg3sJTOwtyFhDopKedRD6142CFkDfWp1QvRKXNTPIOc/edit)  
-The [Docker Image](https://hub.docker.com/repository/docker/billzzhang/shopify-2021-backend) is also provided
+The [Docker Image](https://hub.docker.com/repository/docker/billzzhang/shopify-2021-backend) is also provided  
 Instructions on a Kubernetes deployment is found [here](https://github.com/Billzzhang/k8-shopify-2021-backend)
 
 ## Technologies
